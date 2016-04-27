@@ -24,7 +24,8 @@
 			$scope.cfl_wattage = ($scope.current_lumens * $scope.cfl_conversion).toFixed(1);
 			$scope.led_wattage = ($scope.current_lumens * $scope.led_conversion).toFixed(1);	
 
-			if ($scope.current_hours > 24) { $scope.current_hours = 24;}		
+			if ($scope.current_hours > 24 || $scope.current_hours < 0) { $scope.current_hours = 24;}
+			if ($scope.current_cost < 0) { $scope.current_cost = 0 };		
 			var total_hours = $scope.total_days * $scope.current_hours;
 			var cost = $scope.current_cost / 100;
 
