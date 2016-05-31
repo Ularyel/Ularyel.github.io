@@ -1,69 +1,39 @@
-<!DOCTYPE HTML>
-<html ng-app="myCalculator">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="assets/calculator.css">
-		<script type="text/javascript" src="assets/angular.min.js"></script>
-		<script type="text/javascript" src="assets/calculator.js"></script>
-		<title>Calculator</title>
-	</head>
-	<body>
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Registration</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Load Angular and Angular libraries  -->
+  <script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+  <script type="text/javascript" src="js/lib/angular/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/lib/angular/angular-animate.min.js"></script>
 
-		<div id="myCalculator" ng-controller="myCtrl">
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
 
-			<main>
-				<section class="inc">
-					<div>
-						<h4>Incandescent</h4>
-						<p>{{inc_wattage}}</p>
-						<p>{{inc_cost}}</p>
-					</div>					
-				</section>
-				<section class="hal">
-					<div>
-						<h4>Halogen</h4>
-						<p>{{hal_wattage}}</p>
-						<p>{{hal_cost}}</p>
-					</div>
-				</section>
-				<section class="cfl">
-					<div>
-						<h4>CFL</h4>
-	                    <p>{{cfl_wattage}}</p>
-						<p>{{cfl_cost}}</p>
-					</div>
-				</section>
-				<section class="led">
-					<div>
-						<h4>LED</h4>
-						<p>{{led_wattage}}</p>
-						<p>{{led_cost}}</p>
-					</div>
-				</section>
-			</main>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
-			<form>
-				<div>
-					<h4>Lumens</h4>
-					<p>Brightness </br>of bulb</p>
-					<select ng-change="calculate()" ng-model="current_lumens" ng-options="o as o for o in lumen_options">						
-					</select>
-				</div>
-				<div>
-					<h4>kWh</h4>
-					<p>Kilowatt-<br>hour cost</p>
-					<input ng-change="calculate()" type="number" ng-model="current_cost" value="{{current_cost}}"> cents
-				</div>
-				<div>
-					<h4>Hours</h4>
-					<p>Usage <br>per day</p>
-					<input ng-change="calculate()" type="number" ng-model="current_hours" value="{{current_hours}}">
-				</div>
-			</form>
+  
+  <!-- Load application files -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/controllers/registration.js"></script>
+  <script type="text/javascript" src="js/controllers/success.js"></script>
 
-		</div>
-	
+  	
 
-	</body>
+</head>
+<body>
+<header>
+  <nav class="cf" ng-include="'views/nav.html'">
+</header>
+<div class="page">
+  <main class="cf" ng-view="true">
+  </main>
+</div>
+</body>
 </html>
