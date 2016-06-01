@@ -18,6 +18,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
     
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
     <script src="js/app.js"></script>
     <script src="js/services/text-service.js"></script>
     
@@ -33,23 +36,19 @@
     <div class="container-fluid vertical-center">
       <div class="row top-row">
         <div class="col-md-12">
-          <div ng-view="true">
+          <div ng-view="true" class="ng-enter">
           </div>
         </div>
       </div>  
       <div class="row controls" ng-controller="myCtrl">
         <div class="col-xs-6 prev-control">
-          <button type="button" class="btn btn-default" ng-show="counter" ng-click="previous();"><a ng-href="{{'' | urlPrefix}}/{{counter}}">Prev</a></button>       
+          <button type="button" class="btn btn-default" ng-show="counter" ng-click="previous()">Prev</button>       
         </div>
         <div class="col-xs-6 next-control">
-          <button type="button" class="btn btn-default btn-raised" ng-click="next();"><a ng-href="{{'' | urlPrefix}}/{{counter}}">Next</a></button>
+          <button type="button" class="btn btn-default btn-raised" ng-click="next()"><!-- <a href="{{'' | urlPrefix}}/{{nextPage}}"> -->Next</button>
         </div>
-      </div>  
+      </div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

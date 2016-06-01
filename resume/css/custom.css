@@ -57,7 +57,7 @@ a {
 
 }
 
-/*
+
 @keyframes slideInRight {
 	from { transform: translateX(100%); }
 	to { transform: translateX(0); }
@@ -76,4 +76,4 @@ a {
 
 .ng-enter {
 	animation: slideInRight 0.25s both linear;
-} */
+} 

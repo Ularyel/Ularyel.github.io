@@ -4,27 +4,32 @@ app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.
 		when('/:id', {
 			templateUrl: "templates/content.template.html",
-			controller: 'myCtrl'
+			controller: 'myCtrl',
+			reloadOnSearch: false
 		}).
 		otherwise({
       		redirectTo: '/0'
     	});
 
-}]).run(['$routeParams', function($routeParams){
-	$routeParams.id = 0
+}])
 
-}]);
-
-
-app.controller("myCtrl", ['$scope', 'TextService', '$routeParams', function($scope, TextService, $routeParams){
+app.controller("myCtrl", ['$scope', 'TextService', '$routeParams', '$location', function($scope, TextService, $routeParams, $location){
 
 	
-	$scope.counter = 0;
+	$scope.setCounter = function () {
+		var urlStr = $location.url();
+		var urlInt = parseInt(urlStr.slice(1));
+		$scope.counter = urlInt ;
+	};
+	
+	$scope.setCounter();
 
+	$scope.$on("$routeChangeSuccess", $scope.setCounter);
 
 	$scope.next = function(){
 		$scope.counter++;
-		console.log($scope.counter);
+		$location.path("/" + $scope.counter);
+		$scope.setCounter();
 
 	};
 
@@ -33,7 +38,7 @@ app.controller("myCtrl", ['$scope', 'TextService', '$routeParams', function($sco
 		if ($scope.counter < 0) {
 			$scope.counter = 0
 		}
-		console.log($scope.counter);
+		$location.path("/" + $scope.counter);
 
 	};
 
@@ -48,10 +53,4 @@ app.controller("myCtrl", ['$scope', 'TextService', '$routeParams', function($sco
 
 	
 }]);
-
-app.filter('urlPrefix', function() {
-    	return function(input) {
-    	return '#';
-	}
-});
 
