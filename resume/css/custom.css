@@ -1,8 +1,12 @@
 body {
 	background: #d32f2f;
 	height: 100%;
+
 }
 
+a {
+	color: #64B5F6;
+}
 
 .container-fluid {
 	width: 100%;
@@ -16,11 +20,60 @@ body {
 
 .content {
 	font-size: 2em;
-	color: #FFFFFF;
+	color: #FAFAFA;
 	text-transform: uppercase;
 	text-align: center;
 }
 
+.btn {
+	background-color: #FFD54F;
+}
+
+.btn:hover {
+ 	background-color: #FFF176;
+}
+
+.btn:focus {
+	background-color: #FFD54F;
+}
+
+.btn-raised {
+      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: 0.2s;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+
+
 .prev-control {
 	text-align: right;
 }
+
+.a {
+	color: #FFFFFF;
+}
+.controls {
+	margin-top: 200px;
+
+}
+
+/*
+@keyframes slideInRight {
+	from { transform: translateX(100%); }
+	to { transform: translateX(0); }
+}
+
+
+@-moz-keyframs slideInRight {
+	from { transform: translateX(100%); }
+	to { transform: translateX(0); }
+}
+
+@-webkit-keyframs slideInRight {
+	from { transform: translateX(100%); }
+	to { transform: translateX(0); }
+}
+
+.ng-enter {
+	animation: slideInRight 0.25s both linear;
+} */

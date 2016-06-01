@@ -1,22 +1,26 @@
-var app = angular.module("app", ['ngResource', 'ngRoute']);
+var app = angular.module("app", ['ngResource', 'ngRoute', 'ngAnimate']);
 
-app.config(function($routeProvider){
+app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.
-		when('/', {
-			templatesURL: "templates/content.template.html",
+		when('/:id', {
+			templateUrl: "templates/content.template.html",
 			controller: 'myCtrl'
 		}).
-		when('/:id', {
-			templatesURL: "templates/content.template.html",
-			controller: 'myCtrl',
-			reloadOnSearch: false
-		});
+		otherwise({
+      		redirectTo: '/0'
+    	});
 
-});	
+}]).run(['$routeParams', function($routeParams){
+	$routeParams.id = 0
+
+}]);
 
 
-app.controller("myCtrl", ['$scope', 'TextService', function($scope, TextService){
+app.controller("myCtrl", ['$scope', 'TextService', '$routeParams', function($scope, TextService, $routeParams){
+
+	
 	$scope.counter = 0;
+
 
 	$scope.next = function(){
 		$scope.counter++;
@@ -26,15 +30,21 @@ app.controller("myCtrl", ['$scope', 'TextService', function($scope, TextService)
 
 	$scope.previous = function() {
 		$scope.counter--;
+		if ($scope.counter < 0) {
+			$scope.counter = 0
+		}
 		console.log($scope.counter);
 
 	};
 
-	$scope.templatesURL = "templates/content.template.html";
-	
+
+
 	TextService.getText().then(function (response){
-		$scope.text = response;
+		$scope.text = response[parseInt($routeParams.id, 10)].body;
 	});
+
+
+
 
 	
 }]);
