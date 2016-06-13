@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<header class=" text-center">
+			<h3>To Do Application</h3>
+		</header>
+		<div class="col-sm-6 col-sm-offset-3 form">
+			<form ng-submit="addTask()">
+				<div class="form-group">
+					<input type="text" id="activity" ng-model="activity" class="form-control" placeholder="Add a new task" / required>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-default btn-default" ng-click="removedMarked()">Clear Marked Tasks</button>
+					<input type="submit" class="btn btn-default btn-primary pull-right" />
+				</div>
+			</form>
+		</div><!-- col-sm-6 -->
+		<div class="col-sm-6 col-sm-offset-3 tasks">
+			<h3>Tasks List</h3>
+			<ul class="list-group" 
+				ng-repeat="task in tasks | orderBy : '-' track by $index">
+				<li class="list-group-item" ng-class="{completed: task.completed}">
+				<input type="checkbox" ng-model="task.completed" ng-change="update()" class="pull-left"> <p>{{task.title}}<p>
+				<button type="button" class="close" aria-label="Close" ng-click="remove(task)"><span aria-hidden="true">&times;</span></button>
+				</li>
+
+			</ul>
+		</div><!-- col-sm-6 -->		
+	</div><!-- row -->
+</div><!-- container -->
+
